@@ -25,15 +25,18 @@ class ViewController: UIViewController {
             }
             else
             {
-                if let content = data
-                {
-                    do
-                    {
-                        let myJSON = try JSONSerialization.jsonObject(with: content, options: JSONSerialization.ReadingOptions.mutableContainers) as AnyObject
-                        let location = myJSON["position"] as? AnyObject
-                        print(location)
-                    }
-                    catch
+                if let mydata = data{
+                    
+                    do {
+                        let myJson = try JSONSerialization.jsonObject(with: mydata, options: JSONSerialization.ReadingOptions.mutableContainers) as AnyObject
+                        
+                        if let position = myJson.value(forKey: "position") as! NSArray?{
+                            if let lat = position.value(forKey: "lng") as AnyObject?{
+                                print(lat)
+                            }
+                        }
+                        
+                    }catch
                     {
                         
                     }
