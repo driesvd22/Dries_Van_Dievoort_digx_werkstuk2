@@ -15,11 +15,9 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     @IBOutlet weak var map: MKMapView!
     @IBAction func Refresh(_ sender: UIButton) {
         getData()
-        print("halo")
-        print(stations[0].address)
     }
     @IBOutlet weak var Tijd: UILabel!
-
+    var locationManager = CLLocationManager()
     
     let jsonUrl = "https://api.jcdecaux.com/vls/v1/stations?contract=Bruxelles-Capitale&apiKey=0f6eeb84f56a0ec96b79278e957afed918b2d6db"
     var stations: Array<Station> = Array()
@@ -36,6 +34,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         let minutes = calendar.component(.minute, from: date)
         let seconds = calendar.component(.second, from: date)
         Tijd.text = "\(hour):\(minutes):\(seconds)"
+        showStations()
     }
     
     func getData(){
@@ -177,7 +176,20 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             }
         }
     }
-
-
-
+    
+    func showStations(){
+        
+        locationManager.requestAlwaysAuthorization()
+        locationManager.startUpdatingLocation()
+        
+        for station in stations {
+            let coordinate:CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: station.latitude, longitude: station.longitude)
+            let annotation: MKPointAnnotation = MKPointAnnotation()
+            annotation.coordinate = coordinate
+            annotation.title = station.name! + " Status: " + station.status!
+            annotation.subtitle = station.address
+            self.map.addAnnotation(annotation)
+            self.map.selectAnnotation(annotation, animated: true)
+        }
+    }
 }
