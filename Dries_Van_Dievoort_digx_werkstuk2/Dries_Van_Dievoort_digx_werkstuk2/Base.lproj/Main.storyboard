@@ -22,7 +22,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="5Rk-gO-2VI">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="5Rk-gO-2VI">
                                 <rect key="frame" x="0.0" y="55" width="375" height="612"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="375" id="Jtr-eY-4n3"/>
@@ -54,10 +54,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="5Rk-gO-2VI" firstAttribute="height" secondItem="tTF-KG-xQP" secondAttribute="height" id="9DW-OG-M7o"/>
                             <constraint firstItem="5Rk-gO-2VI" firstAttribute="centerX" secondItem="tTF-KG-xQP" secondAttribute="centerX" id="Emb-0b-TKV"/>
                             <constraint firstItem="5Rk-gO-2VI" firstAttribute="width" secondItem="tTF-KG-xQP" secondAttribute="width" id="Ixh-IE-dRU"/>
                             <constraint firstItem="5Rk-gO-2VI" firstAttribute="width" secondItem="tTF-KG-xQP" secondAttribute="height" multiplier="375:667" id="cx4-FN-BEi"/>
+                            <constraint firstItem="5Rk-gO-2VI" firstAttribute="top" secondItem="z9x-nW-UBQ" secondAttribute="bottom" constant="35" id="qgu-cI-TeT"/>
                             <constraint firstItem="5Rk-gO-2VI" firstAttribute="centerY" secondItem="tTF-KG-xQP" secondAttribute="centerY" id="xoN-dA-EuS"/>
                         </constraints>
                     </view>
