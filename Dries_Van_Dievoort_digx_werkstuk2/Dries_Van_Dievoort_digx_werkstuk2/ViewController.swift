@@ -8,21 +8,43 @@
 
 import UIKit
 import CoreData
+import MapKit
 
-class ViewController: UITableViewController {
+class MapViewController: UIViewController, MKMapViewDelegate {
 
+    @IBOutlet weak var map: MKMapView!
+    @IBAction func Refresh(_ sender: UIButton) {
+        getData()
+        print("halo")
+        print(stations[0].address)
+    }
+    @IBOutlet weak var Tijd: UILabel!
+
+    
     let jsonUrl = "https://api.jcdecaux.com/vls/v1/stations?contract=Bruxelles-Capitale&apiKey=0f6eeb84f56a0ec96b79278e957afed918b2d6db"
     var stations: Array<Station> = Array()
     var i = 0
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         getData()
-    
+        let date = Date()
+        let calendar = Calendar.current
+        let hour = calendar.component(.hour, from: date)
+        let minutes = calendar.component(.minute, from: date)
+        let seconds = calendar.component(.second, from: date)
+        Tijd.text = "\(hour):\(minutes):\(seconds)"
     }
     
     func getData(){
+        let date = Date()
+        let calendar = Calendar.current
+        let hour = calendar.component(.hour, from: date)
+        let minutes = calendar.component(.minute, from: date)
+        let seconds = calendar.component(.second, from: date)
+        Tijd.text = "\(hour):\(minutes):\(seconds)"
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let managedContext = appDelegate.persistentContainer.viewContext
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Station")
@@ -138,7 +160,7 @@ class ViewController: UITableViewController {
                         }
                         
                         do {
-                            print(self.i)
+                            print("halo")
                             try managedContext.save()
                             
                         }
@@ -148,43 +170,14 @@ class ViewController: UITableViewController {
                         }
                         
                     }
-                    
                 }
-                
             }
             task.resume()
+                }
+            }
         }
     }
-}
 
-    }
-
- 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return stations.count
-    }
-    
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        stations = stations.sorted(by: {$0.number < $1.number})
-        let cell = tableView.dequeueReusableCell(withIdentifier: "myCell", for: indexPath)
-        //cell.textLabel?.text = stationsopgehaald[indexPath.row].name
-        cell.textLabel?.text = String(stations[indexPath.row].latitude)
-        cell.detailTextLabel?.text = stations[indexPath.row].status
-        
-        
-        
-        //cell.textLabel?.text = testdata[indexPath.row]
-        // Configure the cell...
-        
-        return cell
-    }
 
 
 }
