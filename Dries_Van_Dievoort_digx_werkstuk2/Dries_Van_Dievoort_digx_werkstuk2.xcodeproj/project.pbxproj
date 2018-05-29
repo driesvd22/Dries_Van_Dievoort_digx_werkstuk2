@@ -15,6 +15,7 @@
 		3F3C68E920B1C564006CDE60 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F3C68E720B1C564006CDE60 /* LaunchScreen.storyboard */; };
 		3F3C68F420B1C564006CDE60 /* Dries_Van_Dievoort_digx_werkstuk2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3C68F320B1C564006CDE60 /* Dries_Van_Dievoort_digx_werkstuk2Tests.swift */; };
 		3F3C68FF20B1C564006CDE60 /* Dries_Van_Dievoort_digx_werkstuk2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3C68FE20B1C564006CDE60 /* Dries_Van_Dievoort_digx_werkstuk2UITests.swift */; };
+		3F4E7E9A20BD40AB00E0E701 /* Station Core Data Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4E7E9920BD40AB00E0E701 /* Station Core Data Controller.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		3F3C68FA20B1C564006CDE60 /* Dries_Van_Dievoort_digx_werkstuk2UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Dries_Van_Dievoort_digx_werkstuk2UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F3C68FE20B1C564006CDE60 /* Dries_Van_Dievoort_digx_werkstuk2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dries_Van_Dievoort_digx_werkstuk2UITests.swift; sourceTree = "<group>"; };
 		3F3C690020B1C564006CDE60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3F4E7E9920BD40AB00E0E701 /* Station Core Data Controller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Station Core Data Controller.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,13 +101,14 @@
 		3F3C68DA20B1C564006CDE60 /* Dries_Van_Dievoort_digx_werkstuk2 */ = {
 			isa = PBXGroup;
 			children = (
+				3F4E7E9920BD40AB00E0E701 /* Station Core Data Controller.swift */,
 				3F3C68DB20B1C564006CDE60 /* AppDelegate.swift */,
 				3F3C68DD20B1C564006CDE60 /* ViewController.swift */,
 				3F3C68DF20B1C564006CDE60 /* Main.storyboard */,
-				3F3C68E520B1C564006CDE60 /* Assets.xcassets */,
 				3F3C68E720B1C564006CDE60 /* LaunchScreen.storyboard */,
-				3F3C68EA20B1C564006CDE60 /* Info.plist */,
 				3F3C68E220B1C564006CDE60 /* Dries_Van_Dievoort_digx_werkstuk2.xcdatamodeld */,
+				3F3C68EA20B1C564006CDE60 /* Info.plist */,
+				3F3C68E520B1C564006CDE60 /* Assets.xcassets */,
 			);
 			path = Dries_Van_Dievoort_digx_werkstuk2;
 			sourceTree = "<group>";
@@ -264,6 +267,7 @@
 			files = (
 				3F3C68E420B1C564006CDE60 /* Dries_Van_Dievoort_digx_werkstuk2.xcdatamodeld in Sources */,
 				3F3C68DE20B1C564006CDE60 /* ViewController.swift in Sources */,
+				3F4E7E9A20BD40AB00E0E701 /* Station Core Data Controller.swift in Sources */,
 				3F3C68DC20B1C564006CDE60 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -507,6 +511,7 @@
 				3F3C690520B1C564006CDE60 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3F3C690620B1C564006CDE60 /* Build configuration list for PBXNativeTarget "Dries_Van_Dievoort_digx_werkstuk2Tests" */ = {
 			isa = XCConfigurationList;
@@ -515,6 +520,7 @@
 				3F3C690820B1C564006CDE60 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3F3C690920B1C564006CDE60 /* Build configuration list for PBXNativeTarget "Dries_Van_Dievoort_digx_werkstuk2UITests" */ = {
 			isa = XCConfigurationList;
@@ -523,6 +529,7 @@
 				3F3C690B20B1C564006CDE60 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
