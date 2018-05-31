@@ -22,11 +22,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     
     let jsonUrl = "https://api.jcdecaux.com/vls/v1/stations?contract=Bruxelles-Capitale&apiKey=0f6eeb84f56a0ec96b79278e957afed918b2d6db"
     var stations: Array<Station> = Array()
-    var i = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        map.delegate = self
+        getData()
         self.locationManager.requestAlwaysAuthorization()
         self.locationManager.requestWhenInUseAuthorization()
         if CLLocationManager.locationServicesEnabled(){
@@ -36,7 +35,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         }
         self.map.showsUserLocation = true
         // Do any additional setup after loading the view, typically from a nib.
-        getData()
         let date = Date()
         let calendar = Calendar.current
         let hour = calendar.component(.hour, from: date)
@@ -44,7 +42,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         let seconds = calendar.component(.second, from: date)
         Tijd.text = "\(hour):\(minutes):\(seconds)"
         showStations()
-        self.map.showAnnotations(self.map.annotations, animated: true)
     }
     
     
@@ -94,7 +91,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
                 let json = try! JSONSerialization.jsonObject(with: responseData, options: []) as? NSArray
                 for obj in json!
                 {
-                    self.i = self.i+1
                     if let objDict = obj as? NSDictionary
                     {
                         
@@ -171,9 +167,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
                         }
                         
                         do {
-                            print("halo")
                             try managedContext.save()
-                            
                         }
                         catch
                         {
@@ -188,7 +182,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
             }
         }
     }
-    
     /*func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         if annotation is MKUserLocation {return nil}
         
@@ -207,26 +200,28 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         
         for station in stations {
             let coordinate:CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: station.latitude, longitude: station.longitude)
-            let annotation: StationAnnotation =  StationAnnotation(address: station.address!, AvailBikeStands: station.available_bike_stands, AvailBikes: station.available_bikes, banking: station.banking, bonus: station.bonus, BikeStands: station.bike_stands, ContrName: station.contract_name!, LastUpdate: station.last_update, coordinate: coordinate, name: station.name!, number: station.number, status: station.status!)
+            let annotation: MKPointAnnotation = MKPointAnnotation()
+            annotation.coordinate = coordinate
+            annotation.title = station.name
+            annotation.subtitle = station.status
             self.map.addAnnotation(annotation)
-            self.map.selectAnnotation(annotation, animated: true)
         }
+        print(String(stations.count))
     }
 }
 
 
 extension MapViewController: MKMapViewDelegate{
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        guard let annotation = annotation as? StationAnnotation else {return nil }
+    private func mapView(_ mapView: MKMapView, viewFor annotation: MKPointAnnotation) -> MKAnnotationView? {
+        guard let annotation = annotation as? MKAnnotation else {return nil }
         let identifier = "Pin"
-        var view: MKPinAnnotationView
+        var view: MKAnnotationView
         
-        if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
-            as? MKPinAnnotationView{
+        if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier){
             dequeuedView.annotation = annotation
             view = dequeuedView
         } else{
-            view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            view = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
             view.canShowCallout = true
             view.calloutOffset = CGPoint(x: -5, y: 5)
             view.rightCalloutAccessoryView = UIButton(type: .infoLight)

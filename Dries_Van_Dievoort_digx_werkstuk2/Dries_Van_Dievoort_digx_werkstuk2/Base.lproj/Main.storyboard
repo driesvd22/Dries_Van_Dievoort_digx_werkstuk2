@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G20015" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="YIe-QD-KuB">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="YIe-QD-KuB">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,7 +22,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="5Rk-gO-2VI">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="5Rk-gO-2VI">
                                 <rect key="frame" x="0.0" y="55" width="375" height="612"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="375" id="Jtr-eY-4n3"/>
@@ -38,14 +38,14 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Last Updated:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FEG-eG-5SR">
-                                <rect key="frame" x="200" y="22" width="114" height="21"/>
+                                <rect key="frame" x="180" y="22" width="114" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z2M-hO-1D0">
-                                <rect key="frame" x="322" y="22" width="80" height="21"/>
+                                <rect key="frame" x="295" y="22" width="80" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -58,7 +58,7 @@
                             <constraint firstItem="5Rk-gO-2VI" firstAttribute="width" secondItem="tTF-KG-xQP" secondAttribute="width" id="Ixh-IE-dRU"/>
                             <constraint firstItem="5Rk-gO-2VI" firstAttribute="width" secondItem="tTF-KG-xQP" secondAttribute="height" multiplier="375:667" id="cx4-FN-BEi"/>
                             <constraint firstItem="5Rk-gO-2VI" firstAttribute="top" secondItem="z9x-nW-UBQ" secondAttribute="bottom" constant="35" id="qgu-cI-TeT"/>
-                            <constraint firstItem="5Rk-gO-2VI" firstAttribute="centerY" secondItem="tTF-KG-xQP" secondAttribute="centerY" id="xoN-dA-EuS"/>
+                            <constraint firstItem="5Rk-gO-2VI" firstAttribute="centerY" secondItem="tTF-KG-xQP" secondAttribute="centerY" constant="27.5" id="xoN-dA-EuS"/>
                         </constraints>
                     </view>
                     <connections>
