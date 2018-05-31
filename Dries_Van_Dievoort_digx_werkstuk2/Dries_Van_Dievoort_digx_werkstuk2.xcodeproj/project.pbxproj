@@ -208,6 +208,7 @@
 				TargetAttributes = {
 					3F3C68D720B1C564006CDE60 = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = S62SM5SZ5G;
 						ProvisioningStyle = Automatic;
 					};
 					3F3C68EE20B1C564006CDE60 = {
@@ -430,6 +431,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = S62SM5SZ5G;
 				INFOPLIST_FILE = Dries_Van_Dievoort_digx_werkstuk2/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "EHB.Dries-Van-Dievoort-digx-werkstuk2";
@@ -442,6 +444,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = S62SM5SZ5G;
 				INFOPLIST_FILE = Dries_Van_Dievoort_digx_werkstuk2/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "EHB.Dries-Van-Dievoort-digx-werkstuk2";
