@@ -28,14 +28,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         getData()
-        self.locationManager.requestAlwaysAuthorization()
-        self.locationManager.requestWhenInUseAuthorization()
-        if CLLocationManager.locationServicesEnabled(){
-            locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-            locationManager.startUpdatingLocation()
-        }
-        self.map.showsUserLocation = true
         // Do any additional setup after loading the view, typically from a nib.
         let date = Date()
         let calendar = Calendar.current
@@ -43,8 +35,25 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         let minutes = calendar.component(.minute, from: date)
         let seconds = calendar.component(.second, from: date)
         Tijd.text = "\(hour):\(minutes):\(seconds)"
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+        locationManager.pausesLocationUpdatesAutomatically = true
         showStations()
-        print(String(self.stations.count))
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let location = locations[0]
+        
+        let span:MKCoordinateSpan = MKCoordinateSpanMake(0.01,0.01)
+        
+        let myLocation: CLLocationCoordinate2D = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
+        
+        let region:MKCoordinateRegion = MKCoordinateRegionMake(myLocation, span)
+        
+        map.setRegion(region, animated: true)
+        self.map.showsUserLocation = true
     }
     
     func showStations(){
@@ -200,21 +209,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             print("No Data found")
         }
     }
-    
-    
-    /*func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        if annotation is MKUserLocation {return nil}
-        
-        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: ) as? MKPinAnnotationView
-        if annotationView == nil {
-            annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "identifier")
-            annotationView?.canShowCallout = true
-            annotationView?.rightCalloutAccessoryView = UIButton(type: .infoLight)
-        }else{
-            annotationView?.annotation = annotation
-        }
-        return annotationView
-    }*/
 
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {

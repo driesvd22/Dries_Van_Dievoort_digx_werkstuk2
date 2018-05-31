@@ -17,6 +17,8 @@
 		3F3C68FF20B1C564006CDE60 /* Dries_Van_Dievoort_digx_werkstuk2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3C68FE20B1C564006CDE60 /* Dries_Van_Dievoort_digx_werkstuk2UITests.swift */; };
 		3F4E7E9A20BD40AB00E0E701 /* Station Core Data Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4E7E9920BD40AB00E0E701 /* Station Core Data Controller.swift */; };
 		3F4E7E9C20BDEED300E0E701 /* StationAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4E7E9B20BDEED300E0E701 /* StationAnnotation.swift */; };
+		5554F0B020C0260E00A4AD83 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5554F0AF20C0260E00A4AD83 /* TableViewController.swift */; };
+		5554F0B420C02A7100A4AD83 /* StationDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5554F0B320C02A7100A4AD83 /* StationDetailController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,8 @@
 		3F3C690020B1C564006CDE60 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3F4E7E9920BD40AB00E0E701 /* Station Core Data Controller.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Station Core Data Controller.swift"; sourceTree = "<group>"; };
 		3F4E7E9B20BDEED300E0E701 /* StationAnnotation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationAnnotation.swift; sourceTree = "<group>"; };
+		5554F0AF20C0260E00A4AD83 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		5554F0B320C02A7100A4AD83 /* StationDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationDetailController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,8 +109,10 @@
 			children = (
 				3F4E7E9920BD40AB00E0E701 /* Station Core Data Controller.swift */,
 				3F3C68DB20B1C564006CDE60 /* AppDelegate.swift */,
-				3F3C68DD20B1C564006CDE60 /* ViewController.swift */,
 				3F4E7E9B20BDEED300E0E701 /* StationAnnotation.swift */,
+				3F3C68DD20B1C564006CDE60 /* ViewController.swift */,
+				5554F0AF20C0260E00A4AD83 /* TableViewController.swift */,
+				5554F0B320C02A7100A4AD83 /* StationDetailController.swift */,
 				3F3C68DF20B1C564006CDE60 /* Main.storyboard */,
 				3F3C68E720B1C564006CDE60 /* LaunchScreen.storyboard */,
 				3F3C68E220B1C564006CDE60 /* Dries_Van_Dievoort_digx_werkstuk2.xcdatamodeld */,
@@ -269,6 +275,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F3C68E420B1C564006CDE60 /* Dries_Van_Dievoort_digx_werkstuk2.xcdatamodeld in Sources */,
+				5554F0B420C02A7100A4AD83 /* StationDetailController.swift in Sources */,
+				5554F0B020C0260E00A4AD83 /* TableViewController.swift in Sources */,
 				3F3C68DE20B1C564006CDE60 /* ViewController.swift in Sources */,
 				3F4E7E9A20BD40AB00E0E701 /* Station Core Data Controller.swift in Sources */,
 				3F4E7E9C20BDEED300E0E701 /* StationAnnotation.swift in Sources */,
