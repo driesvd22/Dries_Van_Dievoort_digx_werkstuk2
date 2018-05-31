@@ -23,6 +23,8 @@ class StationAnnotation: NSObject, MKAnnotation {
     var name: String?
     var number: Int64
     var status: String?
+    var title: String?
+    var subtitle: String?
     
     
     init (address:String,AvailBikeStands:Int64,AvailBikes:Int64,banking:Bool,bonus:Bool,BikeStands:Int64,ContrName:String,LastUpdate:Int64,coordinate:CLLocationCoordinate2D, name:String,number:Int64,status:String )
@@ -41,7 +43,22 @@ class StationAnnotation: NSObject, MKAnnotation {
         self.status = status
     }
     
-    
+     init(coordinate: CLLocationCoordinate2D, title: String, subtitle: String) {
+        self.coordinate = coordinate
+        self.title = title
+        self.subtitle = subtitle
+        self.name = ""
+        self.number = 0
+        self.status = ""
+        self.address = ""
+        self.available_bike_stands = 0
+        self.available_bikes = 0
+        self.banking = false
+        self.bonus = false
+        self.bike_stands = 0
+        self.contract_name = ""
+        self.last_update = 0
+    }
     
     
     

@@ -11,7 +11,7 @@ import CoreData
 import MapKit
 import CoreLocation
 
-class MapViewController: UIViewController, CLLocationManagerDelegate {
+class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
 
     @IBOutlet weak var map: MKMapView!
     @IBAction func Refresh(_ sender: UIButton) {
@@ -22,6 +22,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
     
     let jsonUrl = "https://api.jcdecaux.com/vls/v1/stations?contract=Bruxelles-Capitale&apiKey=0f6eeb84f56a0ec96b79278e957afed918b2d6db"
     var stations: Array<Station> = Array()
+    var i = 0
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,9 +44,16 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         let seconds = calendar.component(.second, from: date)
         Tijd.text = "\(hour):\(minutes):\(seconds)"
         showStations()
+        print(String(self.stations.count))
     }
     
-    
+    func showStations(){
+        for station in stations {
+            let coordinate:CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: station.latitude, longitude: station.longitude)
+            let annotation: StationAnnotation = StationAnnotation(coordinate: coordinate, title: station.name!, subtitle: station.status!)
+            self.map.addAnnotation(annotation)
+        }
+    }
     
     func getData(){
         let date = Date()
@@ -53,9 +62,13 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         let minutes = calendar.component(.minute, from: date)
         let seconds = calendar.component(.second, from: date)
         Tijd.text = "\(hour):\(minutes):\(seconds)"
+        
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        
         let managedContext = appDelegate.persistentContainer.viewContext
+        
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Station")
+        
         request.returnsObjectsAsFaults = false
 
         do {
@@ -91,6 +104,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
                 let json = try! JSONSerialization.jsonObject(with: responseData, options: []) as? NSArray
                 for obj in json!
                 {
+                    self.i = self.i + 1
                     if let objDict = obj as? NSDictionary
                     {
                         
@@ -167,6 +181,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
                         }
                         
                         do {
+                            print(self.i)
                             try managedContext.save()
                         }
                         catch
@@ -181,7 +196,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
                 }
             }
         }
+        catch{
+            print("No Data found")
+        }
     }
+    
+    
     /*func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         if annotation is MKUserLocation {return nil}
         
@@ -195,39 +215,31 @@ class MapViewController: UIViewController, CLLocationManagerDelegate {
         }
         return annotationView
     }*/
+
     
-    func showStations(){
-        
-        for station in stations {
-            let coordinate:CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: station.latitude, longitude: station.longitude)
-            let annotation: MKPointAnnotation = MKPointAnnotation()
-            annotation.coordinate = coordinate
-            annotation.title = station.name
-            annotation.subtitle = station.status
-            self.map.addAnnotation(annotation)
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        guard !(annotation is MKUserLocation) else {
+            return nil
         }
-        print(String(stations.count))
+        
+        let annotationIdentifier =  "AnnotationIdentifier"
+        var annotationView: MKAnnotationView?
+        if let dequeuedAnnotationView = mapView.dequeueReusableAnnotationView(withIdentifier: annotationIdentifier)
+        {
+            annotationView = dequeuedAnnotationView
+            annotationView?.annotation = annotation
+        }
+        else{
+            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
+            annotationView?.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+        }
+        
+        if let annotationView = annotationView{
+            annotationView.canShowCallout =  true
+            annotationView.image = UIImage(named: "")
+        }
+     return annotationView
     }
 }
 
-
-extension MapViewController: MKMapViewDelegate{
-    private func mapView(_ mapView: MKMapView, viewFor annotation: MKPointAnnotation) -> MKAnnotationView? {
-        guard let annotation = annotation as? MKAnnotation else {return nil }
-        let identifier = "Pin"
-        var view: MKAnnotationView
-        
-        if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier){
-            dequeuedView.annotation = annotation
-            view = dequeuedView
-        } else{
-            view = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-            view.canShowCallout = true
-            view.calloutOffset = CGPoint(x: -5, y: 5)
-            view.rightCalloutAccessoryView = UIButton(type: .infoLight)
-        }
-        return view
-        
-    }
-}
 
